@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prajwal Shinde - Full Stack Developer & AI Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0099ff;
+            --secondary: #00ffff;
+            --dark-bg: #000000;
+            --card-bg: #0a0a0a;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --border: #1a1a1a;
+            --accent: #0099ff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(42, 47, 74, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 153, 255, 0.15), transparent);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.15), transparent);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0099ff, #00ffff);
+            color: #000000;
+            border-color: #0099ff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, transparent, rgba(58, 134, 255, 0.05));
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 1rem auto 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.15);
+        }
+
+        .skill-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .skill-tag {
+            background: rgba(0, 153, 255, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 153, 255, 0.2);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 0;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(157, 78, 221, 0.1));
+            padding: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .project-tech {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-body p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 6rem 0;
+            background: linear-gradient(180deg, rgba(58, 134, 255, 0.05), transparent);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-left: 0;
+            text-align: right;
+            padding-right: 4%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: 55%;
+            text-align: left;
+            padding-left: 4%;
+        }
+
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .contact-link:hover {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .contact-link-icon {
+            font-size: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            color: var(--primary);
+            text-decoration: none;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            border-color: var(--primary);
+            background: rgba(0, 212, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Resume Download Button */
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #0099ff, #00ffff);
+            color: #000000;
+            border: 2px solid #0099ff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 153, 255, 0.7);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.2);
+            color: var(--secondary);
+        }
+
+        /* Profile Picture in Contact Section */
+        .profile-picture-contact {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+            margin: 2rem auto;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .profile-picture-contact:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .hero-content h1 {
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .hero-content p {
+            animation: slideInUp 0.8s ease-out 0.2s both;
+        }
+
+        .cta-buttons {
+            animation: slideInUp 0.8s ease-out 0.4s both;
+        }
+
+        .skill-card {
+            animation: slideInUp 0.6s ease-out both;
+        }
+
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
+        .skill-card:nth-child(5) { animation-delay: 0.5s; }
+        .skill-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .project-card {
+            animation: slideInUp 0.6s ease-out both;
+        }
+
+        .project-card:nth-child(1) { animation-delay: 0.1s; }
+        .project-card:nth-child(2) { animation-delay: 0.3s; }
+
+        .timeline-item {
+            animation: fadeIn 0.6s ease-out both;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+
+        .section-title {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin-left: 0 !important;
+                padding-left: 2rem !important;
+                text-align: left !important;
+                padding-right: 0 !important;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">
+            <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18682ffe-3081-42b1-9173-887135a41e3e" alt="Prajwal Shinde" class="logo-img">
+            <span class="logo-text">Prajwal</span>
+        </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Hi, I&apos;m <span class="gradient-text">Prajwal Shinde</span></h1>
+            <p>Full Stack Developer | AI/ML Engineer | Building intelligent web experiences with React, Django & NLP</p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">Responsive Design</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend & Database</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>AI/ML & APIs</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">Pretrained Models</span>
+                        <span class="skill-tag">API Integration</span>
+                        <span class="skill-tag">Spotify API</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools & DevOps</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Vercel</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">JWT Auth</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3>Specializations</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Full Stack Dev</span>
+                        <span class="skill-tag">AI Integration</span>
+                        <span class="skill-tag">Dark Mode UI</span>
+                        <span class="skill-tag">Auth Systems</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>MelodAI</h3>
+                        <p class="project-tech">Django • React • NLP • Spotify API</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>AI-Powered Music Recommendation Engine</strong></p>
+                        <p>An intelligent music generator that analyzes user mood and sentiment using advanced NLP models, then intelligently matches with Spotify tracks.</p>
+                        <p><strong>Key Features:</strong></p>
+                        <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <li>Sentiment & mood detection using pretrained NLP models</li>
+                            <li>Real-time Spotify API integration for track matching</li>
+                            <li>Audio feature analysis (tempo, energy, valence)</li>
+                            <li>REST API architecture for scalability</li>
+                            <li>React frontend with mood visualization</li>
+                            <li>Performance optimized inference pipeline</li>
+                        </ul>
+                        <p><strong>Impact:</strong> Successfully processed 500+ mood-based recommendations with 85% accuracy</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Prajwal7214" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Expensly</h3>
+                        <p class="project-tech">MERN • Express • MongoDB • Chart.js</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Smart Personal Finance Tracker</strong></p>
+                        <p>A comprehensive full-stack application for managing personal finances with intelligent analytics, secure authentication, and real-time insights.</p>
+                        <p><strong>Key Features:</strong></p>
+                        <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <li>JWT authentication with encrypted password handling</li>
+                            <li>Real-time expense tracking & categorization</li>
+                            <li>Dynamic dashboard with Chart.js visualizations</li>
+                            <li>Budget management & savings goal tracking</li>
+                            <li>Smart alerts for budget overruns</li>
+                            <li>Dark mode support for better UX</li>
+                            <li>Modular backend architecture with REST APIs</li>
+                        </ul>
+                        <p><strong>Highlights:</strong> Secure payment system, monthly trend analysis, 100% responsive design</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Prajwal7214" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Music Intelligence Systems</h3>
+                        <p class="project-tech">React • Spotify API • NLP • ML</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Multi-Project Music Ecosystem</strong></p>
+                        <p>Developed advanced music recommendation systems with emotional intelligence and real-time personalization capabilities.</p>
+                        <p><strong>Key Features:</strong></p>
+                        <ul style="margin: 0.5rem 0 1rem 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
+                            <li>Sentiment analysis for mood-based recommendations</li>
+                            <li>Spotify API integration for 70M+ track database</li>
+                            <li>Interactive React frontends with mood visualization</li>
+                            <li>Real-time playlist generation</li>
+                            <li>Audio feature matching algorithm</li>
+                            <li>User preference learning system</li>
+                        </ul>
+                        <p><strong>Highlights:</strong> 90%+ accuracy in mood detection, instant playlist generation, seamless Spotify integration</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Prajwal7214" class="project-link">View Project →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>AI Intern — Infosys Springboard</h3>
+                        <p class="timeline-date">Oct - Dec 2025</p>
+                        <p class="timeline-desc">Built MelodAI with NLP sentiment analysis, REST API development, and full-stack Spotify integration. Optimized inference performance and collaborated on end-to-end deployment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Bachelor of Engineering - Computer Science</h3>
+                        <p class="timeline-date">Nov 2023 – May 2027</p>
+                        <p class="timeline-desc">Ajeenkya DY Patil School of Engineering, Pune University (SPPU) • CGPA: 8.68/10. Actively participating in OpenAI Buildathon and technical assessments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>Full Stack Development Journey</h3>
+                        <p class="timeline-date">Ongoing</p>
+                        <p class="timeline-desc">Building production-grade applications in React, Node.js, Django with focus on AI integration, authentication systems, and modern UI/UX design patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Let&apos;s Connect</h2>
+            <div class="contact-content">
+                <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18682ffe-3081-42b1-9173-887135a41e3e" alt="Prajwal Shinde" class="profile-picture-contact" id="profilePicContact">
+                <p>I&apos;m always interested in new opportunities, collaborations, and discussing AI, full-stack development, and innovative projects.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:prajwalshinde1320@gmail.com" class="contact-link">
+                        <span class="contact-link-icon">✉</span>
+                        <span>prajwalshinde1320@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/prajwal1320/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span class="contact-link-icon">in</span>
+                        <span>linkedin.com/in/prajwal1320/</span>
+                    </a>
+                    <a href="https://github.com/Prajwal7214" target="_blank" rel="noopener noreferrer" class="contact-link">
+                        <span class="contact-link-icon">⚡</span>
+                        <span>github.com/Prajwal7214</span>
+                    </a>
+                </div>
+                
+                <button id="downloadResume" class="resume-btn">📥 Download Resume (PDF)</button>
+                
+                <div class="social-links">
+                    <a href="mailto:prajwalshinde1320@gmail.com" class="social-link" title="Email">✉</a>
+                    <a href="https://www.linkedin.com/in/prajwal1320/" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">in</a>
+                    <a href="https://github.com/Prajwal7214" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">⚡</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" id="modalClose">&times;</span>
+        <img id="modalImage" class="modal-content" alt="Profile Picture">
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Prajwal Shinde. All rights reserved. Built with passion for great code &amp; design.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Image Modal Functionality
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalClose = document.getElementById('modalClose');
+        const logoImg = document.querySelector('.logo-img');
+        const profilePicContact = document.getElementById('profilePicContact');
+
+        function openModal(imageSrc) {
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+        }
+
+        logoImg.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openModal(this.src);
+        });
+
+        profilePicContact.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openModal(this.src);
+        });
+
+        modalClose.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Resume Download Functionality
+        document.getElementById('downloadResume').addEventListener('click', function() {
+            const resumeContent = `
+PRAJWAL SHINDE
+Full Stack Developer | AI/ML Engineer
+prajwalshinde1320@gmail.com
+Pune, Maharashtra, IN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ABOUT ME
+Full Stack Developer with expertise in React, Node.js, and Django. Passionate about building 
+AI-integrated applications and creating exceptional user experiences. Currently interning at 
+Infosys working on MelodAI - an intelligent music recommendation system.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+EDUCATION
+Bachelor of Engineering - Computer Engineering
+Ajeenkya DY Patil School of Engineering, Pune University (SPPU)
+Nov 2023 – May 2027 | CGPA: 8.68/10
+• Actively participating in OpenAI Buildathon
+• Preparing for Amazon Summer School entrance test
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROFESSIONAL EXPERIENCE
+
+AI Intern — Infosys Springboard (Oct - Dec 2025)
+• Built MelodAI with sentiment analysis & Spotify API integration
+• Integrated pretrained NLP models in Django backend
+• Developed REST APIs for AI inference and mood processing
+• Created React frontend for mood visualization and recommendations
+• Optimized inference speed and improved backend response flow
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FEATURED PROJECTS
+
+MelodAI — AI Music Recommendation System
+(Django, React, NLP, Spotify API)
+• Sentiment analysis for mood detection
+• Real-time Spotify track matching
+• Audio feature analysis algorithm
+• 85% accuracy in mood-based recommendations
+
+Expensly — Personal Finance Tracker
+(MERN Stack, JWT, MongoDB, Chart.js)
+• Full-stack expense management system
+• Real-time analytics dashboard
+• Budget tracking & savings goals
+• Dark mode support
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+TECHNICAL SKILLS
+
+Languages: JavaScript, Python, C++, SQL, HTML, CSS
+Frontend: React, HTML/CSS, Responsive Design, Dark Mode UI
+Backend: Node.js, Express, Django, REST APIs, JWT Auth
+Database: MongoDB, SQL
+AI/ML: NLP, Pretrained Models, Sentiment Analysis, Model Integration
+Tools: Git, GitHub, Vercel, Postman
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ACHIEVEMENTS
+✓ Successfully built and deployed production-grade applications
+✓ Integrated complex AI/ML models with React frontends
+✓ Implemented secure authentication and authorization systems
+✓ Created responsive, modern UIs with dark mode support
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CONNECT
+Email: prajwalshinde1320@gmail.com
+LinkedIn: linkedin.com/in/prajwal1320/
+GitHub: github.com/Prajwal7214
+            `;
+
+            // Create a blob and trigger download
+            const element = document.createElement('a');
+            const file = new Blob([resumeContent], {type: 'text/plain'});
+            element.href = URL.createObjectURL(file);
+            element.download = 'Prajwal_Shinde_Resume.txt';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+        });
+
+        // Smooth scroll enhancement
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

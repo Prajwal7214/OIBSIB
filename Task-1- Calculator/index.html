@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light">
+    <div class="calculator light">
+        <div class="header">
+            <button class="history-toggle" onclick="toggleHistory()">📜</button>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+        </div>
+        
+        <div class="display">
+            <div class="expression" id="expression"></div>
+            <div class="result" id="result">0</div>
+        </div>
+
+        <div class="buttons">
+            <button class="calc-btn btn-clear" onclick="clearAll()">AC</button>
+            <button class="calc-btn btn-clear" onclick="toggleSign()">+/-</button>
+            <button class="calc-btn btn-clear" onclick="appendOperator('%')">%</button>
+            <button class="calc-btn btn-operator" onclick="appendOperator('/')">÷</button>
+            
+            <button class="calc-btn btn-number" onclick="appendNumber('7')">7</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('8')">8</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('9')">9</button>
+            <button class="calc-btn btn-operator" onclick="appendOperator('*')">×</button>
+            
+            <button class="calc-btn btn-number" onclick="appendNumber('4')">4</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('5')">5</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('6')">6</button>
+            <button class="calc-btn btn-operator" onclick="appendOperator('-')">−</button>
+            
+            <button class="calc-btn btn-number" onclick="appendNumber('1')">1</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('2')">2</button>
+            <button class="calc-btn btn-number" onclick="appendNumber('3')">3</button>
+            <button class="calc-btn btn-operator" onclick="appendOperator('+')">+</button>
+            
+            <button class="calc-btn btn-number btn-zero" onclick="appendNumber('0')">0</button>
+            <button class="calc-btn btn-decimal" onclick="appendNumber('.')">.</button>
+            <button class="calc-btn btn-operator" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <div class="history-panel" id="historyPanel">
+        <div class="history-header">
+            <div class="history-title">History</div>
+            <button class="close-history" onclick="toggleHistory()">✕</button>
+        </div>
+        <div class="history-list" id="historyList">
+            <div class="no-history">No calculations yet</div>
+        </div>
+        <button class="clear-history" onclick="clearHistory()">Clear History</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
